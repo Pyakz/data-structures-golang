@@ -55,6 +55,36 @@ func (list *LinkedList) InsertAtIndex(node *Node, index int) {
 	list.length++
 }
 
+func (list *LinkedList) RemoveAtIndex(index int) {
+
+	if list.length == 0 {
+		return
+	}
+
+	if index < 0 {
+		return
+	}
+
+	length := 0
+	currentNode := list.head
+
+	for length != index-1 {
+		if currentNode.next == nil {
+			break
+		}
+		currentNode = currentNode.next
+		length++
+	}
+	fmt.Println(currentNode.data)
+
+	// example
+	// next node is 5, set that to the next and next which is 6
+	// and decrement the list length
+	currentNode.next = currentNode.next.next
+
+	list.length--
+}
+
 func (list *LinkedList) RemoveHead() {
 	if list.length == 0 {
 		return
@@ -111,8 +141,7 @@ func main() {
 		list.Insert(&Node{data: count})
 		count--
 	}
-	list.InsertAtIndex(&Node{data: 11}, 11)
-	list.InsertAtIndex(&Node{data: 6}, 4)
 
+	list.RemoveAtIndex(4)
 	list.PrintList()
 }
