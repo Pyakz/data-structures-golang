@@ -75,7 +75,6 @@ func (list *LinkedList) RemoveAtIndex(index int) {
 		currentNode = currentNode.next
 		length++
 	}
-	fmt.Println(currentNode.data)
 
 	// example
 	// next node is 5, set that to the next and next which is 6
@@ -112,10 +111,9 @@ func (list *LinkedList) PrintList() {
 		toPrint = toPrint.next
 		list.length--
 	}
-
 }
 
-func (list *LinkedList) GetAtIndex(index int) {
+func (list *LinkedList) PrintAtIndex(index int) {
 	toPrint := list.head
 
 	temporaryLength := list.length
@@ -132,16 +130,20 @@ func (list *LinkedList) GetAtIndex(index int) {
 	fmt.Println(toPrint.data)
 }
 
+func AddTwoNumbers(l1 *Node, l2 *Node) {
+
+}
+
 func main() {
 	list := LinkedList{}
 
-	count := 10
+	count := 3
 
 	for count != 0 {
 		list.Insert(&Node{data: count})
 		count--
 	}
 
-	list.RemoveAtIndex(4)
-	list.PrintList()
+	AddTwoNumbers(&Node{data: 1, next: &Node{data: 2 * 3}}, &Node{data: 2 + 3, next: &Node{data: 2 * 2}})
+
 }
